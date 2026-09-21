@@ -172,15 +172,30 @@ function renderDesignMobileCarousel() {
   designMobileCarousel.innerHTML = "";
   designCarouselDots.innerHTML = "";
 
+  /* Phones get the 640px-wide rendition of each photograph (~95KB rather than
+     ~650KB); the cards are never wider than that. */
+  const mobileSrc = (src) => src.replace(/\/design-studio\//, "/design-studio/640w/");
+
+  const pending = [];
+
   designStudioImages.forEach((imageData, index) => {
     const card = document.createElement("div");
     card.className = "design-mobile-card";
 
     const img = document.createElement("img");
-    img.src = imageData.src;
     img.alt = imageData.alt;
     img.loading = "lazy";
     img.decoding = "async";
+
+    /* `loading="lazy"` alone is unreliable inside a horizontal scroller —
+       browsers treat the whole strip as near-viewport and fetch every frame.
+       Hold the URL back and attach it as each card actually approaches. */
+    if (index < 2) {
+      img.src = mobileSrc(imageData.src);
+    } else {
+      img.dataset.src = mobileSrc(imageData.src);
+      pending.push(img);
+    }
 
     card.appendChild(img);
     designMobileCarousel.appendChild(card);
@@ -189,6 +204,30 @@ function renderDesignMobileCarousel() {
     dot.className = `carousel-dot${index === 0 ? " active" : ""}`;
     designCarouselDots.appendChild(dot);
   });
+
+  if (!pending.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    pending.forEach((img) => { img.src = img.dataset.src; });
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
+        io.unobserve(img);
+      });
+    },
+    { root: designMobileCarousel, rootMargin: "200px 400px" }
+  );
+
+  pending.forEach((img) => io.observe(img));
 }
 
 function loadDeferredHeroOverlays() {
@@ -1326,6 +1365,7 @@ if (sceneScreen) {
   if (!aboutSection || !heroEl) return;
 
   let ticking = false;
+  let lastHeroHeight = 0;
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -1335,6 +1375,21 @@ if (sceneScreen) {
     const rect = aboutSection.getBoundingClientRect();
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     const isCompactScreen = window.matchMedia("(max-width: 920px)").matches;
+
+    /* On phones/tablets (<= 920px), the hero is in normal document flow directly above
+       the About/CTA section, so it scrolls naturally with the page without gaps or jumps. */
+    if (isCompactScreen) {
+      if (heroEl.style.display === "none") heroEl.style.display = "";
+      heroEl.style.opacity = "";
+      heroEl.style.transform = "";
+      heroEl.style.visibility = "";
+      heroEl.style.pointerEvents = "";
+      heroEl.inert = false;
+      heroEl.removeAttribute("aria-hidden");
+      heroEl.classList.remove("hero--away");
+      document.body.classList.remove("hero-away");
+      return;
+    }
 
     // Compute progress so the hero is fully faded when the about section's top
     // reaches the viewport (i.e., becomes visible). We start fading when the
@@ -1677,7 +1732,27 @@ if (designCarousel3d) {
   designCarousel3d.addEventListener('pointerdown', on3dPointerDown);
   designCarousel3d.addEventListener('touchstart', on3dPointerDown, { passive: false });
 }
-scheduleDesignCarousel3dInit();
+
+/* The 3D carousel is display:none below 920px, but initialising it still
+   eagerly preloads every Design Studio photograph (~11MB). Phones already
+   have the lazy-loaded .design-mobile-carousel, so only start the 3D one
+   once the viewport is actually wide enough to show it. */
+const designDesktopQuery = window.matchMedia("(min-width: 921px)");
+function initDesignCarouselWhenWideEnough() {
+  if (designDesktopQuery.matches) {
+    scheduleDesignCarousel3dInit();
+    return true;
+  }
+  return false;
+}
+if (!initDesignCarouselWhenWideEnough()) {
+  const onDesignViewportChange = () => {
+    if (initDesignCarouselWhenWideEnough()) {
+      designDesktopQuery.removeEventListener("change", onDesignViewportChange);
+    }
+  };
+  designDesktopQuery.addEventListener("change", onDesignViewportChange);
+}
 
 if (revealNodes.length && !("IntersectionObserver" in window)) {
   revealNodes.forEach((node) => node.classList.add("is-visible"));
@@ -1865,6 +1940,15 @@ window.requestAnimationFrame(tick);
   if (!form) return;
 
   const statusNode = form.querySelector(".form-status");
+  const dateEl = form.querySelector('[name="event_date"]');
+
+  // Set min date to today
+  if (dateEl) {
+    try {
+      const today = new Date().toISOString().split("T")[0];
+      dateEl.setAttribute("min", today);
+    } catch (e) {}
+  }
 
   function setStatus(message, isError) {
     if (!statusNode) return;
@@ -1887,20 +1971,38 @@ window.requestAnimationFrame(tick);
     const messageEl = form.querySelector('[name="message"]');
 
     const emailVal = emailEl ? emailEl.value.trim() : "";
+    const dateVal = dateEl ? dateEl.value.trim() : "";
     const subjectVal = subjectEl ? subjectEl.value.trim() : "";
     const messageVal = messageEl ? messageEl.value.trim() : "";
 
-    if (!emailVal || !subjectVal || !messageVal) {
-      setStatus("Please fill in all required fields.", true);
+    if (!emailVal || !dateVal || !subjectVal || !messageVal) {
+      setStatus("Please fill in all required fields including the event date.", true);
       return;
     }
 
     setStatus("", false);
 
+    let formattedDate = dateVal;
+    try {
+      const parts = dateVal.split("-");
+      if (parts.length === 3) {
+        const dObj = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        formattedDate = dObj.toLocaleDateString("en-US", {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+      }
+    } catch (e) {
+      formattedDate = dateVal;
+    }
+
     const messageText =
       "Hello Meghavi Comferts,\n\n" +
       "I would like to enquire about your wedding and event services.\n\n" +
       "Email: " + emailVal + "\n\n" +
+      "Event Date: " + formattedDate + " (" + dateVal + ")\n\n" +
       "Subject: " + subjectVal + "\n\n" +
       "Message:\n" + messageVal + "\n\n" +
       "Please get in touch with me regarding my enquiry.\n\n" +
@@ -1912,4 +2014,164 @@ window.requestAnimationFrame(tick);
     window.location.href = whatsappUrl;
   });
 })();
+
+// --- Gallery & Lightbox Controller ---
+(function initGallery() {
+  const galleryGrid = document.getElementById("galleryGrid");
+  const filterBtns = document.querySelectorAll(".gallery-filter-btn");
+  const lightbox = document.getElementById("galleryLightbox");
+  if (!galleryGrid || !lightbox) return;
+
+  const lightboxBackdrop = document.getElementById("galleryLightboxBackdrop");
+  const lightboxClose = document.getElementById("galleryLightboxClose");
+  const lightboxPrev = document.getElementById("galleryLightboxPrev");
+  const lightboxNext = document.getElementById("galleryLightboxNext");
+  const lightboxMedia = document.getElementById("galleryLightboxMedia");
+  const lightboxTitle = document.getElementById("galleryLightboxTitle");
+  const lightboxCounter = document.getElementById("galleryLightboxCounter");
+
+  const cards = Array.from(galleryGrid.querySelectorAll(".gallery-card"));
+  let currentFilter = "all";
+  let visibleCards = [...cards];
+  let currentIndex = 0;
+
+  // Hover video previews (desktop)
+  cards.forEach((card) => {
+    if (card.dataset.type === "video") {
+      const video = card.querySelector("video");
+      if (video) {
+        card.addEventListener("mouseenter", () => {
+          video.play().catch(() => {});
+        });
+        card.addEventListener("mouseleave", () => {
+          video.pause();
+          video.currentTime = 0.5;
+        });
+      }
+    }
+
+    card.addEventListener("click", () => {
+      const activeIdx = visibleCards.indexOf(card);
+      if (activeIdx !== -1) {
+        openLightbox(activeIdx);
+      }
+    });
+  });
+
+  // Filter Buttons
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+      currentFilter = filter;
+
+      filterBtns.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle("is-active", isActive);
+        b.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      cards.forEach((card) => {
+        const matches = filter === "all" || card.dataset.type === filter;
+        card.classList.toggle("is-hidden", !matches);
+      });
+
+      visibleCards = cards.filter((card) => !card.classList.contains("is-hidden"));
+    });
+  });
+
+  function openLightbox(index) {
+    if (!visibleCards.length) return;
+    currentIndex = (index + visibleCards.length) % visibleCards.length;
+    renderLightboxContent();
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (lightboxMedia) {
+      const video = lightboxMedia.querySelector("video");
+      if (video) video.pause();
+      lightboxMedia.innerHTML = "";
+    }
+  }
+
+  function renderLightboxContent() {
+    if (!lightboxMedia || !visibleCards[currentIndex]) return;
+    const card = visibleCards[currentIndex];
+    const type = card.dataset.type;
+    const title = card.querySelector(".gallery-card__title")?.textContent || "";
+
+    lightboxMedia.innerHTML = "";
+
+    if (type === "video") {
+      const originalVideo = card.querySelector("video");
+      const video = document.createElement("video");
+      video.src = originalVideo ? originalVideo.src.split("#")[0] : "";
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.className = "gallery-lightbox__video";
+      lightboxMedia.appendChild(video);
+    } else {
+      const originalImg = card.querySelector("img");
+      const img = document.createElement("img");
+      img.src = originalImg ? originalImg.src : "";
+      img.alt = originalImg ? originalImg.alt : "";
+      img.className = "gallery-lightbox__img";
+      lightboxMedia.appendChild(img);
+    }
+
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleCards.length}`;
+    }
+  }
+
+  function nextLightbox() {
+    if (!visibleCards.length) return;
+    openLightbox(currentIndex + 1);
+  }
+
+  function prevLightbox() {
+    if (!visibleCards.length) return;
+    openLightbox(currentIndex - 1);
+  }
+
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightboxBackdrop?.addEventListener("click", closeLightbox);
+  lightboxNext?.addEventListener("click", nextLightbox);
+  lightboxPrev?.addEventListener("click", prevLightbox);
+
+  window.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowRight") nextLightbox();
+    else if (e.key === "ArrowLeft") prevLightbox();
+  });
+
+  // Touch swipe support in lightbox for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  lightbox.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextLightbox();
+      else prevLightbox();
+    }
+  }, { passive: true });
+})();
+
+
+
+
+
 

@@ -7,7 +7,7 @@
   <title>Meghavi Comferts</title>
   <meta name="description"
     content="Plan your dream wedding with Meghavi Comferts. Expert luxury wedding planners delivering bespoke design, guest experiences, global logistics, and seamless events." />
-  <link rel="preload" as="image" href="./assets/changes/WDC_BACKGROUND.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="./assets/changes/main_dashboard.jpeg" fetchpriority="high" />
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <!-- favicon removed with the old WDC asset; drop a new one in and re-add this link -->
 
@@ -17,10 +17,10 @@
 <body class="home">
   <header class="site-header" role="banner" aria-label="Top header">
   <div class="site-header__brand" aria-hidden="false">
-    <a href="#top" aria-label="Home" style="display: inline-flex; align-items: center; gap: 0.85rem; text-decoration: none;">
+    <a href="#top" aria-label="Home" class="site-header__brand-pill">
       <img src="./assets/changes/mc_logo.png" class="site-header__brand-logo"
-        alt="Meghavi Comferts logo" style="max-height: 46px; width: auto;" />
-      <span class="site-header__brand-title" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.16em; color: #1a1a1a; text-transform: uppercase;">Meghavi Comferts</span>
+        alt="Meghavi Comferts logo" />
+      <span class="site-header__brand-title">Meghavi Comferts</span>
     </a>
   </div>
 
@@ -61,90 +61,27 @@
 </header>
 
   <main>
-    <section class="hero" id="top" aria-label="Meghavi Comferts scene map">
-      <div class="hero__hint" aria-hidden="true">
-        <span class="hero__hint-desktop">Hover over the highlighted area</span>
-        <span class="hero__hint-mobile">Tap on the highlighted area</span>
+    <section class="hero hero--conference" id="top" aria-label="Meghavi Comferts Conferences">
+      <div class="hero-conference-poster">
+        <img src="./assets/changes/main_dashboard.jpeg"
+          alt="Meghavi Comferts Conferences - Ideas, People, Possibilities"
+          fetchpriority="high" decoding="async" />
       </div>
-      <div class="hero__scene scene-screen" id="sceneScreen">
-        <div class="scene-stage" id="sceneStage">
-          <div class="scene-panorama" id="scenePanorama">
-            <img class="scene-panorama__bg" src="./assets/changes/WDC_BACKGROUND.png"
-              alt="Illustrated Meghavi Comferts streetscape" width="2200" height="1557"
-              fetchpriority="high" decoding="async" />
-          </div>
-
-          <!-- Foreground overlay -->
-          <!-- Foreground overlay -->
-          <div class="scene-foreground" id="sceneForeground">
-            <!-- WDC office hotspot + overlay -->
-            <a class="wdc-hotspot hero-link-hotspot" data-title="About Us" data-hotspot="wdc"
-              data-target="wdc-section" href="#wdc-section" aria-label="Jump to About Us section"></a>
-            <img class="scene-foreground__img--wdc"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_WDC.svg"
-              alt="WDC office overlay elements" decoding="async" />
-            <!-- WDC services hotspot + overlay -->
-            <a class="wdc-services-hotspot hero-link-hotspot" data-title="Our Services"
-              data-hotspot="services" data-target="service-section" href="#service-section"
-              aria-label="Jump to Our Services section"></a>
-            <img class="scene-foreground__img--wdc-services"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_SERVICES.svg"
-              alt="WDC services overlay elements" decoding="async" />
-
-            <!-- Contact hotspot + overlay -->
-            <a class="contact-hotspot hero-link-hotspot" data-title="Contact Us" data-hotspot="contact"
-              data-target="contact-section" href="#contact-section"
-              aria-label="Jump to Contact Us section"></a>
-            <img class="scene-foreground__img--contact"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_CONTACT.svg"
-              alt="Contact overlay elements" decoding="async" />
-
-            <!-- Airplane hotspot + overlay -->
-            <a class="airplane-hotspot hero-link-hotspot" data-title="Destinations"
-              data-hotspot="destinations" data-target="venues-section" href="#venues-section"
-              aria-label="Open Destinations section"></a>
-            <img class="scene-foreground__img--airplane"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_AIRPLANE.svg"
-              alt="Airplane overlay elements" decoding="async" />
-
-            <!-- Our Philosophy hotspot + overlay -->
-            <a class="atelier-hotspot hero-link-hotspot" data-title="Our Philosophy" data-hotspot="atelier"
-              data-target="atelier-section" href="#atelier-section"
-              aria-label="Jump to Our Philosophy content"></a>
-            <img class="scene-foreground__img--atelier"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_WEDDINGATELIER.svg"
-              alt="Wedding Atelier overlay elements" decoding="async" />
-
-            <!-- Gallery hotspot + overlay -->
-            <a class="gallery-hotspot hero-link-hotspot" data-title="Design Studio" data-hotspot="gallery"
-              data-target="design-section" href="#design-section"
-              aria-label="Jump to Design Studio section"></a>
-            <img class="scene-foreground__img--gallery"
-              data-hero-overlay-src="./assets/changes/OVERLAY/WDC_GALLERY.svg"
-              alt="Gallery overlay elements" decoding="async" />
-
-            <!-- Baraat parallax overlay -->
-            <img class="scene-foreground__img--baraat" src="./assets/changes/WDC_BARAAT.png"
-              alt="Baraat parade overlay elements" aria-hidden="true" width="2200" height="1557"
-              fetchpriority="low" decoding="async" />
-          </div>
-        </div>
-      </div>
-
     </section>
 
     <section class="content-section section-about" id="wdc-section" data-section>
       <div class="section-inner section-about__inner">
         <div class="section-about__copy" data-reveal>
           <h2>About Meghavi Comferts</h2>
+          <div class="section-about__accent-line" aria-hidden="true"></div>
           <p>
-            Meghavi Comferts was founded in <strong>1997</strong> with a vision to create extraordinary celebrations and turn wedding dreams into unforgettable experiences.
+            Meghavi Comferts was founded in 1997 with a vision to create extraordinary celebrations and turn wedding dreams into unforgettable experiences.
           </p>
           <p>
-            With a strong association with the <strong>Taj Group</strong>, the brand has built its expertise around refined hospitality, thoughtful planning, and exceptional event experiences.
+            With a strong association with the Taj Group, the brand has built its expertise around refined hospitality, thoughtful planning, and exceptional event experiences.
           </p>
           <p>
-            Led by <strong>Pankaj Kapoor</strong>, Meghavi Comferts brings together <strong>experience, creativity, design, and meticulous execution</strong> to craft celebrations that feel personal, elegant, and truly memorable.
+            Led by Pankaj Kapoor, Meghavi Comferts brings together experience, creativity, design, and meticulous execution to craft celebrations that feel personal, elegant, and truly memorable.
           </p>
           <p>
             From intimate gatherings to grand weddings, every celebration is thoughtfully designed to transform your vision into an experience worth remembering.
@@ -152,7 +89,7 @@
         </div>
 
         <figure class="section-about__art" data-reveal>
-          <img src="./assets/oldassets/comfert.jpeg" alt="Meghavi Comferts showroom illustration"
+          <img src="./assets/changes/meghavi_showroom_gold.jpg" alt="Meghavi Comferts showroom illustration"
             loading="lazy" decoding="async" />
         </figure>
       </div>
@@ -162,7 +99,7 @@
       <div class="section-inner section-wedding-atelier__inner">
         <div class="section-wedding-atelier__stage" data-reveal>
           <figure class="section-wedding-atelier__image section-wedding-atelier__image--left">
-            <img src="./assets/changes/Atelier-1.png"
+            <img src="./assets/changes/Atelier-1.png" srcset="./assets/changes/Atelier-1-800w.jpg 800w, ./assets/changes/Atelier-1.png 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw"
               alt="Wedding Atelier concept installation with crystal chandeliers" loading="lazy"
               decoding="async" />
           </figure>
@@ -186,7 +123,7 @@
           </article>
 
           <figure class="section-wedding-atelier__image section-wedding-atelier__image--right">
-            <img src="./assets/changes/Atelier-2.png" alt="Wedding Atelier floral dining concept"
+            <img src="./assets/changes/Atelier-2.png" srcset="./assets/changes/Atelier-2-800w.jpg 800w, ./assets/changes/Atelier-2.png 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw" alt="Wedding Atelier floral dining concept"
               loading="lazy" decoding="async" />
           </figure>
         </div>
@@ -208,7 +145,7 @@
       <div class="services-mobile-carousel" id="services-mobile-carousel">
         <div class="section-services__item">
           <div class="section-services__image service-image-animate">
-            <img src="./assets/changes/our_services/service_wedding_planning.jpg" alt="Wedding Planning and Project Management" loading="lazy"
+            <img src="./assets/changes/our_services/service_wedding_planning.jpg" srcset="./assets/changes/our_services/service_wedding_planning-800w.jpg 800w, ./assets/changes/our_services/service_wedding_planning.jpg 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw" alt="Wedding Planning and Project Management" loading="lazy"
               decoding="async" />
           </div>
           <div class="section-services__content">
@@ -250,7 +187,7 @@
             </p>
           </div>
           <div class="section-services__image service-image-animate">
-            <img src="./assets/changes/our_services/service_designdecor.jpg" alt="Design and Decor"
+            <img src="./assets/changes/our_services/service_designdecor.jpg" srcset="./assets/changes/our_services/service_designdecor-800w.jpg 800w, ./assets/changes/our_services/service_designdecor.jpg 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw" alt="Design and Decor"
               loading="lazy" decoding="async" />
           </div>
         </div>
@@ -259,7 +196,7 @@
         </div>
         <div class="section-services__item">
           <div class="section-services__image service-image-animate">
-            <img src="./assets/changes/our_services/service_entertainment.jpg"
+            <img src="./assets/changes/our_services/service_entertainment.jpg" srcset="./assets/changes/our_services/service_entertainment-800w.jpg 800w, ./assets/changes/our_services/service_entertainment.jpg 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw"
               alt="Entertainment and Experiences" loading="lazy" decoding="async" />
           </div>
           <div class="section-services__content">
@@ -321,34 +258,253 @@
       </div>
     </section>
 
-    <section class="content-section section-design" id="design-section" data-section>
-      <div class="section-inner section-design__inner" style="text-align: center">
-        <div class="section-design__copy" data-reveal>
-          <h2>Design Studio</h2>
-          <p>
-            A quick look inside our floral, furniture, and environment builds,
-            where room scale, color, and styling are tested before they arrive
-            on site.
+    <section class="content-section section-design section-gallery" id="design-section" data-section>
+      <div class="section-inner section-gallery__inner">
+        <div class="section-gallery__header" data-reveal>
+          <h2>Gallery</h2>
+          <div class="section-about__accent-line" aria-hidden="true" style="margin: 0.8rem auto 1.2rem;"></div>
+          <p class="section-gallery__subtitle">
+            A curated showcase of our signature celebrations, lakeside banquets, bespoke floral installations, and luxury event environments.
           </p>
-        </div>
 
-        <div class="section-design__gallery" data-reveal>
-          <div class="section-design__carousel3d" id="designCarousel3d" aria-live="off"></div>
-          <div class="section-design__nav" aria-label="Design Studio carousel controls">
-            <button type="button" class="section-design__nav-btn section-design__nav-prev" id="designPrev"
-              aria-label="Previous Design Studio images">
-              &lsaquo;
+          <div class="gallery-filters" role="tablist" aria-label="Filter gallery media">
+            <button type="button" class="gallery-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+              All <span class="gallery-filter-count">(14)</span>
             </button>
-            <button type="button" class="section-design__nav-btn section-design__nav-next" id="designNext"
-              aria-label="Next Design Studio images">
-              &rsaquo;
+            <button type="button" class="gallery-filter-btn" data-filter="photo" role="tab" aria-selected="false">
+              Photos <span class="gallery-filter-count">(10)</span>
+            </button>
+            <button type="button" class="gallery-filter-btn" data-filter="video" role="tab" aria-selected="false">
+              Videos <span class="gallery-filter-count">(4)</span>
             </button>
           </div>
         </div>
 
-        <div class="design-mobile-carousel" id="design-mobile-carousel" data-reveal></div>
+        <div class="gallery-grid" id="galleryGrid" data-reveal>
+          <!-- 10 Photos -->
+          <article class="gallery-card" data-type="photo" data-index="0">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-01.jpg" alt="Grand Banquet & Conference Hall Setup at Taj Lake Palace" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Grand Banquet &amp; Conference Hall</h3>
+              <span class="gallery-card__meta">Taj Lake Palace, Udaipur</span>
+            </div>
+          </article>
 
-        <div class="carousel-dots" id="design-carousel-dots" style="margin-top: -1rem;"></div>
+          <article class="gallery-card" data-type="photo" data-index="1">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-02.jpg" alt="Lakeside Sunset Dining & Promenade Arrangement" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Lakeside Sunset Dining</h3>
+              <span class="gallery-card__meta">Lake Pichola Waterfront</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="2">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-03.jpg" alt="Palace Courtyard Terrace Celebration Setup" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Palace Courtyard Terrace Setup</h3>
+              <span class="gallery-card__meta">Outdoor Heritage Celebration</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="3">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-04.jpg" alt="Lakefront Golden Hour Banquet Experience" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Golden Hour Promenade Banquet</h3>
+              <span class="gallery-card__meta">Lake Promenade Dining</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="4">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-05.jpg" alt="Royal Auditorium Stage & Event Illumination" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Royal Auditorium Stage</h3>
+              <span class="gallery-card__meta">Event Illumination &amp; Design</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="5">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-06.jpg" alt="Executive Conference & Gala Round Table Setup" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Gala &amp; Conference Round Tables</h3>
+              <span class="gallery-card__meta">Banquet Seating Arrangement</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="6">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-07.jpg" alt="Waterfront Reception & Evening Ambience" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Waterfront Reception Ambience</h3>
+              <span class="gallery-card__meta">Evening Dining by the Water</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="7">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-08.jpg" alt="Floral Backdrop & Ceremonial Entryway" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Floral Ceremonial Backdrop</h3>
+              <span class="gallery-card__meta">Bespoke Floral Decor</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="8">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-09.jpg" alt="Heritage Palace Dining & Table Styling" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Heritage Palace Dining Styling</h3>
+              <span class="gallery-card__meta">Regal Interior Ambiance</span>
+            </div>
+          </article>
+
+          <article class="gallery-card" data-type="photo" data-index="9">
+            <div class="gallery-card__media">
+              <img src="./assets/gallery/photo-10.jpg" alt="Concert & Keynote Stage Production" loading="lazy" decoding="async" />
+              <span class="gallery-card__badge gallery-card__badge--photo">Photo</span>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#x26F6;</span>
+                <span class="gallery-card__action-text">View Photo</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Keynote Stage Production</h3>
+              <span class="gallery-card__meta">Auditorium &amp; Stage Design</span>
+            </div>
+          </article>
+
+          <!-- 4 Videos -->
+          <article class="gallery-card gallery-card--video" data-type="video" data-index="10">
+            <div class="gallery-card__media">
+              <video src="./assets/gallery/video-01.mp4#t=0.5" preload="metadata" muted playsinline></video>
+              <span class="gallery-card__badge gallery-card__badge--video">&#9654; 0:45</span>
+              <div class="gallery-card__play-btn" aria-hidden="true">
+                <span class="gallery-card__play-icon">&#9654;</span>
+              </div>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#9654;</span>
+                <span class="gallery-card__action-text">Play Video</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Palace Event Setup Walkthrough</h3>
+              <span class="gallery-card__meta">Video Highlight &bull; 0:45</span>
+            </div>
+          </article>
+
+          <article class="gallery-card gallery-card--video" data-type="video" data-index="11">
+            <div class="gallery-card__media">
+              <video src="./assets/gallery/video-02.mp4#t=0.5" preload="metadata" muted playsinline></video>
+              <span class="gallery-card__badge gallery-card__badge--video">&#9654; 0:25</span>
+              <div class="gallery-card__play-btn" aria-hidden="true">
+                <span class="gallery-card__play-icon">&#9654;</span>
+              </div>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#9654;</span>
+                <span class="gallery-card__action-text">Play Video</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Lakeside Celebration &amp; Lighting</h3>
+              <span class="gallery-card__meta">Video Highlight &bull; 0:25</span>
+            </div>
+          </article>
+
+          <article class="gallery-card gallery-card--video" data-type="video" data-index="12">
+            <div class="gallery-card__media">
+              <video src="./assets/gallery/video-03.mp4#t=0.5" preload="metadata" muted playsinline></video>
+              <span class="gallery-card__badge gallery-card__badge--video">&#9654; 0:25</span>
+              <div class="gallery-card__play-btn" aria-hidden="true">
+                <span class="gallery-card__play-icon">&#9654;</span>
+              </div>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#9654;</span>
+                <span class="gallery-card__action-text">Play Video</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Heritage Hall Atmosphere &amp; Decor</h3>
+              <span class="gallery-card__meta">Video Highlight &bull; 0:25</span>
+            </div>
+          </article>
+
+          <article class="gallery-card gallery-card--video" data-type="video" data-index="13">
+            <div class="gallery-card__media">
+              <video src="./assets/gallery/video-04.mp4#t=0.5" preload="metadata" muted playsinline></video>
+              <span class="gallery-card__badge gallery-card__badge--video">&#9654; 2:46</span>
+              <div class="gallery-card__play-btn" aria-hidden="true">
+                <span class="gallery-card__play-icon">&#9654;</span>
+              </div>
+              <div class="gallery-card__overlay">
+                <span class="gallery-card__action-icon">&#9654;</span>
+                <span class="gallery-card__action-text">Play Video</span>
+              </div>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Grand Stage &amp; Event Production Tour</h3>
+              <span class="gallery-card__meta">Video Highlight &bull; 2:46</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -361,6 +517,11 @@
             <label>
               <span>Your E-mail</span>
               <input type="email" name="email" id="whatsappEmail" placeholder="Your E-mail" autocomplete="email" required />
+            </label>
+
+            <label class="contact-form__date-label">
+              <span class="contact-form__field-title">Event Date</span>
+              <input type="date" name="event_date" id="whatsappDate" required />
             </label>
 
             <label>
@@ -409,7 +570,7 @@
         </div>
       </div>
       <figure class="section-contact__art" data-reveal>
-        <img src="./assets/oldassets/grpahic_contact.jpeg" alt="Contact desk illustration" loading="lazy"
+        <img src="./assets/oldassets/grpahic_contact.jpeg" srcset="./assets/oldassets/grpahic_contact-800w.jpg 800w, ./assets/oldassets/grpahic_contact.jpeg 2400w" sizes="(max-width: 920px) min(92vw, 420px), 46vw" alt="Contact desk illustration" loading="lazy"
           decoding="async" />
       </figure>
     </section>
@@ -462,11 +623,22 @@
   </div>
 </footer>
 
-<a href="#top" class="scroll-top" aria-label="Scroll to top" title="Back to top">
-  <span class="arrow" aria-hidden="true"></span>
-</a>
+  <!-- Gallery Lightbox Modal -->
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Media Lightbox">
+    <div class="gallery-lightbox__backdrop" id="galleryLightboxBackdrop"></div>
+    <div class="gallery-lightbox__dialog">
+      <button type="button" class="gallery-lightbox__close" id="galleryLightboxClose" aria-label="Close lightbox">&times;</button>
+      <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--prev" id="galleryLightboxPrev" aria-label="Previous media">&#8249;</button>
+      <div class="gallery-lightbox__media" id="galleryLightboxMedia"></div>
+      <button type="button" class="gallery-lightbox__nav gallery-lightbox__nav--next" id="galleryLightboxNext" aria-label="Next media">&#8250;</button>
+      <div class="gallery-lightbox__caption-bar">
+        <div class="gallery-lightbox__title" id="galleryLightboxTitle"></div>
+        <div class="gallery-lightbox__counter" id="galleryLightboxCounter"></div>
+      </div>
+    </div>
+  </div>
 
-<script src="./script.js?v=3"></script>
+  <script src="./script.js?v=3"></script>
 </body>
 
 </html>
