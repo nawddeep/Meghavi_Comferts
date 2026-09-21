@@ -1756,7 +1756,16 @@ body:not(.home) main {
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: #ffffff !important;
+  background: #2a221b url('data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAABQBQCdASogABIAPzmOulWvKiWjMBgIAeAnCWcACBAunwiDIftv4blonITCYK/99m9N6IAA/ucuU0hi3WwxEyRy0vL/xDzgwazpGvuVpPslEcvnL2B7rLR5JXywDRwfr5b4jID4RK/zHOW22d0jaQTQ4x3oVXsg/qYL8Nnk52wZeEkryPcD1etMdvbBQCZ5FP7QG5KyxsMirGFYb2CV053iInsrq5Tswq3Y130M7pbz1oVKIohZAAoOSLh8eAAA') center / cover no-repeat !important;
+}
+
+.hero-conference-poster picture,
+.hero-conference-poster__picture {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
 }
 
 .hero-conference-poster img {
@@ -6192,7 +6201,18 @@ body {
     background: #ffffff;
   }
 
+  .hero-conference-poster picture,
+  .hero-conference-poster__picture {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
   .hero-conference-poster img {
+    position: relative !important;
+    inset: auto !important;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
