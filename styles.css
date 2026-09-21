@@ -5849,6 +5849,7 @@ body.services-page .section-faq {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     scroll-padding: 0 1.5rem;
+    align-items: flex-start;
   }
 
   .services-mobile-carousel::-webkit-scrollbar {
@@ -5861,7 +5862,7 @@ body.services-page .section-faq {
     background: #ffffff;
     border: 1px solid rgba(181, 142, 88, 0.12);
     border-radius: 1.5rem;
-    padding: 0 0 1.6rem 0;
+    padding: 0 0 1.5rem 0;
     box-shadow: 0 15px 45px rgba(60, 45, 20, 0.06);
     display: flex;
     flex-direction: column;
@@ -5877,17 +5878,22 @@ body.services-page .section-faq {
 
   .services-mobile-carousel .section-services__content {
     order: 1 !important;
+    flex: none !important;
     text-align: left;
-    padding: 1.8rem 1.8rem 0.5rem 1.8rem;
+    padding: 1.6rem 1.6rem 0 1.6rem;
     overflow: visible;
+  }
+
+  .services-mobile-carousel .section-services__content p:last-child {
+    margin-bottom: 0 !important;
   }
 
   .services-mobile-carousel .section-services__image {
     order: 2 !important;
+    flex: none !important;
     width: calc(100% - 3rem);
     max-width: 100%;
     margin: 1rem 1.5rem 0 1.5rem;
-    flex: none;
     height: auto;
   }
 
@@ -5895,7 +5901,7 @@ body.services-page .section-faq {
     border-radius: 1rem;
     width: 100%;
     height: auto;
-    max-height: 260px;
+    max-height: 250px;
     object-fit: cover;
     box-shadow: 0 8px 24px rgba(60, 45, 20, 0.08);
     display: block;
