@@ -965,14 +965,21 @@ function highlightSection(target) {
 function jumpToElement(target) {
   if (!target) return;
 
+  if (target.id === "top") {
+    activeSectionId = "top";
+    updateActiveLinks("top");
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+    });
+    return;
+  }
+
   if (target.hasAttribute("data-section")) {
     highlightSection(target);
     activeSectionId = target.id;
     updateActiveLinks(activeSectionId);
-  } else if (target.id === "top") {
-    scrollLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.dataset.scrollLink === "top");
-    });
   }
 
   target.scrollIntoView({
@@ -1046,6 +1053,14 @@ scrollLinks.forEach((link) => {
 
     event.preventDefault();
     jumpToElement(target);
+    setHeaderMenuState(false);
+  });
+});
+
+document.querySelectorAll('a[href="#top"]:not([data-scroll-link])').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    jumpToElement(document.getElementById("top"));
     setHeaderMenuState(false);
   });
 });
