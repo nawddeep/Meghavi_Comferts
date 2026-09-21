@@ -5866,6 +5866,7 @@ body.services-page .section-faq {
     box-shadow: 0 15px 45px rgba(60, 45, 20, 0.06);
     display: flex;
     flex-direction: column;
+    align-items: stretch !important;
     margin: 0;
     overflow: hidden;
     height: auto;
@@ -5882,14 +5883,19 @@ body.services-page .section-faq {
   .services-mobile-carousel .section-services__content h4,
   .services-mobile-carousel h4 {
     order: 1 !important;
-    font-size: 1.7rem !important;
+    font-size: clamp(1.45rem, 5vw, 1.7rem) !important;
     margin: 1.6rem 1.6rem 0.85rem 1.6rem !important;
     text-align: left !important;
-    justify-content: flex-start !important;
     min-height: 4.2rem !important;
     display: flex !important;
+    flex-wrap: wrap !important;
     align-items: center !important;
-    line-height: 1.2 !important;
+    align-content: center !important;
+    column-gap: 0.35em !important;
+    row-gap: 0.2rem !important;
+    line-height: 1.25 !important;
+    width: calc(100% - 3.2rem) !important;
+    box-sizing: border-box !important;
   }
 
   .services-mobile-carousel .section-services__image {
