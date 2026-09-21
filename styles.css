@@ -4450,8 +4450,8 @@ body.services-page .section-faq {
   /* Four-column, two-row layout:
     Row 1: [brand][useful links][social links][main links]
     Row 2: full-width copyright
-    Brand column is 25% and the three link columns share the remaining space. */
-  grid-template-columns: 25% repeat(3, 1fr);
+    Brand column has ample room (min 320px) and the three link columns share the remaining space. */
+  grid-template-columns: minmax(320px, 1.3fr) repeat(3, 1fr);
   grid-template-rows: auto auto;
   gap: 2rem;
   align-items: center;
@@ -4479,26 +4479,29 @@ body.services-page .section-faq {
 .site-footer__logo-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.5rem 1.4rem;
+  gap: 0.65rem;
+  padding: 0.45rem 1.35rem 0.45rem 1.1rem;
   border: 1px solid #D8CFC2;
   border-radius: 9999px;
   background: #FAF7F2;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   max-width: fit-content;
+  box-sizing: border-box;
 }
 
 .site-footer__logo-image {
   display: block;
-  max-height: 42px;
+  max-height: 38px;
   width: auto;
+  margin-right: -0.15rem;
 }
 
 .site-footer__logo-wrap span {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.09em;
+  word-spacing: 0.12em;
   color: #2D2926 !important;
   text-transform: uppercase;
   white-space: nowrap;
@@ -4578,25 +4581,29 @@ body.services-page .section-faq {
   .site-footer__logo-wrap {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.75rem !important;
-    padding: 0.45rem 1.25rem !important;
+    gap: 0.6rem !important;
+    padding: 0.42rem 1.25rem 0.42rem 1rem !important;
     background: #FAF7F2 !important;
     border: 1px solid #D8CFC2 !important;
     border-radius: 9999px !important;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
     max-width: fit-content !important;
+    box-sizing: border-box !important;
   }
 
   .site-footer__logo-image {
-    max-height: 38px !important;
+    max-height: 36px !important;
     width: auto !important;
+    margin-right: -0.12rem !important;
   }
 
   .site-footer__logo-wrap span {
     color: #2D2926 !important;
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.15em !important;
+    letter-spacing: 0.08em !important;
+    word-spacing: 0.1em !important;
+    white-space: nowrap !important;
   }
 
   .site-footer__brand p {
