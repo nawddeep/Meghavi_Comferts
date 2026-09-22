@@ -132,24 +132,24 @@ const designMobileCarousel = document.getElementById("design-mobile-carousel");
 const designCarouselDots = document.getElementById("design-carousel-dots");
 
 const designStudioImages = [
-  { src: "./assets/design-studio/13.jpg", alt: "Design Studio floral installation detail" },
-  { src: "./assets/design-studio/14.jpg", alt: "Design Studio decor moodboard setup" },
-  // { src: "./assets/design-studio/15.jpeg", alt: "Design Studio styling concept preview" },
-  { src: "./assets/design-studio/16.jpg", alt: "Design Studio event styling mockup" },
-  { src: "./assets/design-studio/17.jpg", alt: "Design Studio floral workshop scene" },
-  { src: "./assets/design-studio/19.jpg", alt: "Design Studio installation planning detail" },
-  { src: "./assets/design-studio/7.jpg", alt: "Design Studio installation mockup" },
-  { src: "./assets/design-studio/20.JPG", alt: "Design Studio visual concept board" },
-  { src: "./assets/design-studio/8.jpg", alt: "Design Studio floral build" },
-  { src: "./assets/design-studio/23.jpeg", alt: "Design Studio ceremony installation" },
-  { src: "./assets/design-studio/22.jpg", alt: "Design Studio centerpiece detail" },
-  { src: "./assets/design-studio/4.jpg", alt: "Design Studio tablescape concept" },
-  { src: "./assets/design-studio/5.jpg", alt: "Design Studio decor styling sample" },
-  { src: "./assets/design-studio/6.jpg", alt: "Design Studio fabric and floral arrangement" },
-  { src: "./assets/design-studio/1.jpg", alt: "Design Studio venue styling board" },
-  { src: "./assets/design-studio/9.jpg", alt: "Design Studio stage composition" },
-  { src: "./assets/design-studio/3.jpg", alt: "Design Studio event environment study" },
-  { src: "./assets/design-studio/2.jpg", alt: "Design Studio lighting and floral test" },
+  { src: "/assets/design-studio/13.jpg", alt: "Design Studio floral installation detail" },
+  { src: "/assets/design-studio/14.jpg", alt: "Design Studio decor moodboard setup" },
+  // { src: "/assets/design-studio/15.jpeg", alt: "Design Studio styling concept preview" },
+  { src: "/assets/design-studio/16.jpg", alt: "Design Studio event styling mockup" },
+  { src: "/assets/design-studio/17.jpg", alt: "Design Studio floral workshop scene" },
+  { src: "/assets/design-studio/19.jpg", alt: "Design Studio installation planning detail" },
+  { src: "/assets/design-studio/7.jpg", alt: "Design Studio installation mockup" },
+  { src: "/assets/design-studio/20.JPG", alt: "Design Studio visual concept board" },
+  { src: "/assets/design-studio/8.jpg", alt: "Design Studio floral build" },
+  { src: "/assets/design-studio/23.jpeg", alt: "Design Studio ceremony installation" },
+  { src: "/assets/design-studio/22.jpg", alt: "Design Studio centerpiece detail" },
+  { src: "/assets/design-studio/4.jpg", alt: "Design Studio tablescape concept" },
+  { src: "/assets/design-studio/5.jpg", alt: "Design Studio decor styling sample" },
+  { src: "/assets/design-studio/6.jpg", alt: "Design Studio fabric and floral arrangement" },
+  { src: "/assets/design-studio/1.jpg", alt: "Design Studio venue styling board" },
+  { src: "/assets/design-studio/9.jpg", alt: "Design Studio stage composition" },
+  { src: "/assets/design-studio/3.jpg", alt: "Design Studio event environment study" },
+  { src: "/assets/design-studio/2.jpg", alt: "Design Studio lighting and floral test" },
 ];
 
 const DESIGN_3D_AUTO_ADVANCE_MS = 3000;
@@ -1857,6 +1857,12 @@ window.requestAnimationFrame(tick);
   const images = document.querySelectorAll('.service-image-animate');
   if (!images.length) return;
 
+  // On mobile devices or within the horizontal carousel, ensure images are immediately visible
+  if (window.innerWidth <= 920 || !("IntersectionObserver" in window)) {
+    images.forEach(img => img.classList.add('revealed'));
+    return;
+  }
+
   const animatedImages = new Set();
 
   const observer = new IntersectionObserver((entries) => {
@@ -2126,6 +2132,9 @@ window.requestAnimationFrame(tick);
       const originalVideo = card.querySelector("video");
       const video = document.createElement("video");
       video.src = originalVideo ? originalVideo.src.split("#")[0] : "";
+      if (originalVideo && originalVideo.poster) {
+        video.poster = originalVideo.poster;
+      }
       video.controls = true;
       video.autoplay = true;
       video.playsInline = true;

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/manrope-400-latin.woff2") format("woff2");
+  src: url("/assets/fonts/manrope-400-latin.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/manrope-500-latin.woff2") format("woff2");
+  src: url("/assets/fonts/manrope-500-latin.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/manrope-600-latin.woff2") format("woff2");
+  src: url("/assets/fonts/manrope-600-latin.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/manrope-700-latin.woff2") format("woff2");
+  src: url("/assets/fonts/manrope-700-latin.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/manrope-800-latin.woff2") format("woff2");
+  src: url("/assets/fonts/manrope-800-latin.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("./assets/fonts/cormorant-garamond-500-latin.woff2") format("woff2");
+  src: url("/assets/fonts/cormorant-garamond-500-latin.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("./assets/fonts/cormorant-garamond-600-latin.woff2") format("woff2");
+  src: url("/assets/fonts/cormorant-garamond-600-latin.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("./assets/fonts/cormorant-garamond-700-latin.woff2") format("woff2");
+  src: url("/assets/fonts/cormorant-garamond-700-latin.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -4763,7 +4763,7 @@ body.services-page .section-faq {
   position: relative;
   display: block;
   transform: translateY(1px);
-  background: center / contain no-repeat url("./assets/icon/angle-up-solid-full.svg");
+  background: center / contain no-repeat url("/assets/icon/angle-up-solid-full.svg");
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5940,6 +5940,12 @@ body.services-page .section-faq {
     object-fit: cover !important;
     box-shadow: 0 8px 24px rgba(60, 45, 20, 0.08) !important;
     display: block !important;
+  }
+
+  .services-mobile-carousel .service-image-animate,
+  .services-mobile-carousel .service-image-animate.revealed {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .services-mobile-carousel .section-services__content p,
